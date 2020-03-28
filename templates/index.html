@@ -1,0 +1,24 @@
+<h1>Predict your image under 6 categories</h1>
+<p>Classes are:</p>
+<ul>
+    <li>Building</li>
+    <li>Forest</li>
+    <li>Glacier</li>
+    <li>Mountain</li>
+    <li>Sea</li>
+    <li>Street</li>
+</ul>
+
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Predict">
+</form>
+{% if img != '' %}
+<img src="media/images/{{img}}" alt='{{img}}' width="20%">
+{% endif %}
+
+{% if pred != '' %}
+<br>This image is categorized as <b style="color:red;">{{pred}}</b>
+{% endif %}
+<p>Unfortunately, this model only has accuracy of 75%</p>
+<h2>This project is based on Intel Scene Classification Challenge</h2>
